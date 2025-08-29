@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บริการหอพักของ SUT</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&family=Sarabun:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <h1>บริการหอพักของ SUT</h1>
+</header>
+
+<nav>
+  <a href="data.html">ข้อมูลนักศึกษา</a>
+  <a href="#">ลงทะเบียน</a>
+  <a href="#">ผลการเรียน</a>
+  <a href="#">ประวัติการลงทะเบียน</a>
+  <a href="#">คำร้อง</a>
+  <a href="#">ประเมินอาจารย์</a>
+  <a href="#">อื่น ๆ</a>
+</nav>
+
+<div class="container">
+    <div class="carousel">
+      <div class="slide"><img src="images/dome1.jpg" alt="สไลด์ 1"/></div>
+      <div class="slide"><img src="images/dome2.jpg" alt="สไลด์ 2"/></div>
+      <div class="slide"><img src="images/dome3.jpg" alt="สไลด์ 3"/></div>
+      
+      <button class="btn-prev" id="prev" aria-label="ก่อนหน้า">‹</button>
+      <button class="btn-next" id="next" aria-label="ถัดไป">›</button>
+      <div class="dots" id="dots"></div>
+    </div>
+
+  <!-- ปุ่มเลื่อน -->
+
+
+  <!-- จุดบอกสถานะ -->
+  <div class="dots" id="dots"></div>
+</div>
+
+<footer>
+  &copy; 2025 ระบบบริการหอพัก มหาวิทยาลัยตัวอย่าง
+</footer>
+
+<!-- ✅ ย้ายสคริปต์มาไว้ตรงนี้ -->
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const dotsContainer = document.getElementById("dots");
+  let currentIndex = 0;
+
+  // สร้าง dots
+  slides.forEach((_, idx) => {
+    const dot = document.createElement("span");
+    if (idx === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => showSlide(idx));
+    dotsContainer.appendChild(dot);
+  });
+  const dots = dotsContainer.querySelectorAll("span");
+
+  function showSlide(index) {
+    currentIndex = index;
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? "block" : "none";
+    });
+    dots.forEach(d => d.classList.remove("active"));
+    dots[index].classList.add("active");
+  }
+
+  function changeSlide(dir) {
+    currentIndex = (currentIndex + dir + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  prev.addEventListener("click", () => changeSlide(-1));
+  next.addEventListener("click", () => changeSlide(1));
+
+  // Auto Slide
+  setInterval(() => changeSlide(1), 5000);
+
+  // Init
+  showSlide(0);
+</script>
+
+</body>
+</html>
