@@ -16,7 +16,7 @@ export default function Header() {
                 </div>
                 <div className="bg-white">
                     <ul className="flex justify-center items-center gap-15 text-gray-700 font-medium ">
-                        {["รู้จักหอใน", "โครงการ", "บริการ", "ผู้ลงทุนสัมพันธ์", "ความยั่งยืน"].map((item, idx) => (
+                        {["หน้าหลัก", "รายชื่อผู้พัก", "หอพัก", "แจ้งซ่อม", "เลือกตั้ง", "ฟอร์มเอกสาร"].map((item, idx) => (
                             <li key={idx}>
                                 <a
                                     href="#"
@@ -52,12 +52,12 @@ export default function Header() {
                                 </div>
                                 <ul className="p-2">
                                     {[
-                                        { icon: "./assets/icons/user.png", label: "My profile" },
-                                        { icon: "./assets/icons/edit.png", label: "Edit profile" },
-                                        { icon: "./assets/icons/envelope.png", label: "Inbox" },
-                                        { icon: "./assets/icons/settings.png", label: "Setting" },
-                                        { icon: "./assets/icons/question.png", label: "Help" },
-                                        { icon: "./assets/icons/log-out.png", label: "Logout" },
+                                        { icon: "./assets/icons/user.png", label: "ข้อมูลของฉัน" },
+                                        { icon: "./assets/icons/edit.png", label: "เปลีย่นแปลงข้อมูล" },
+                                        { icon: "./assets/icons/envelope.png", label: "ติดต่อ" },
+                                        { icon: "./assets/icons/settings.png", label: "ตั้งค่า" },
+                                        { icon: "./assets/icons/question.png", label: "ช่วยเหลือ" },
+                                        { icon: "./assets/icons/log-out.png", label: "ออกจากระบบ" },
                                     ].map((item, idx) => (
                                         <li
                                             key={idx}
