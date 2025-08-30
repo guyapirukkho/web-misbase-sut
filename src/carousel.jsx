@@ -39,7 +39,7 @@ export default function Carousel() {
         key={index}
         onClick={() => setCurrent(index)}
         className={`w-2 h-2 rounded-full pr-4 transition-all ${
-          current === index ? "bg-gray-200 scale-125" : "bg-white"
+          current === index ? "bg-gray-200 scale-125 cursor-pointer" : "bg-white"
         }`}
       />
     ))}

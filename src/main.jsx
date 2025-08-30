@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Header />
     <Home />
-    {/* <Footer className="pt-20"/> */}
+    <Footer />
   </React.StrictMode>
 );
