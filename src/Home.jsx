@@ -65,11 +65,8 @@ const textBlockConvenience = (
   );
 
   return (
-    <div className="mt-24 px-30">
-      {/* Carousel */}
+    <div className="mt-24 px-10">
       <Carousel />
-
-      {/* Section 1 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
         {textBlockCleanDesign}
         {imageBlock(Dome1, "Kids Stay Free", "ห้องน้ำรวม", "fade-up")}
