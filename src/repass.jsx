@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import Sutdorm1 from "./assets/picture/sutdorm1.png";
 import bglogin from "./assets/picture/bglogin.png";
 
 export default function ForgotPassword({ onResetRequest }) {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onResetRequest(); 
+    onResetRequest();
   };
 
   return (
@@ -12,7 +15,15 @@ export default function ForgotPassword({ onResetRequest }) {
       className="flex items-center justify-center min-h-screen bg-cover bg-center px-10"
       style={{ backgroundImage: `url(${bglogin})` }}
     >
-      <div className="bg-white rounded-lg shadow-lg w-full h-125 max-w-md p-8">
+      <div className="bg-white rounded-lg shadow-lg w-full h-125 max-w-md p-8 relative">
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-4 left-4 text-orange-400 hover:text-orange-500 flex items-center gap-1"
+        >
+          <span className="pi pi-arrow-left"></span>
+          <span className="text-sm font-medium">กลับ</span>
+        </button>
+
         <div className="flex flex-col items-center">
           <img
             src={Sutdorm1}
