@@ -48,11 +48,8 @@ export default function Home() {
   );
 
   return (
-    <div className="mt-24 px-30">
-      {/* Carousel */}
+    <div className="mt-24 px-10">
       <Carousel />
-
-      {/* Section 1 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
         {textBlock}
         {imageBlock(Dome1, "Kids Stay Free", "Kids Stay and Eat For Free", "fade-up")}

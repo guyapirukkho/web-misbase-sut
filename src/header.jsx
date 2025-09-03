@@ -21,11 +21,11 @@ export default function Header({ onLogout }) {
 
     const navLinks = [
         { label: "หน้าหลัก", path: "/" },
-        { label: "รายชื่อผู้พัก", path: "/residents" },
-        { label: "หอพัก", path: "/dorm" },
-        { label: "แจ้งซ่อม", path: "/repair" },
-        { label: "ตรวจค่าไฟ", path: "/light" },       // ✅ ไปหน้า light
-        { label: "ชำระเงิน", path: "/payment" },     // ✅ ไปหน้า payment
+        { label: "รายชื่อผู้พัก", path: "/" },
+        { label: "หอพัก", path: "/" },
+        { label: "แจ้งซ่อม", path: "/" },
+        { label: "ตรวจค่าไฟ", path: "/light" },   
+        { label: "ชำระเงิน", path: "/payment" },   
     ];
 
     return (
@@ -48,7 +48,6 @@ export default function Header({ onLogout }) {
                     ))}
                 </ul>
 
-                {/* โปรไฟล์ */}
                 <div className="relative">
                     <div
                         className="w-8 h-8 rounded-full overflow-hidden cursor-pointer border-2 border-gray-300"

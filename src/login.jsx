@@ -1,4 +1,4 @@
-import Sutdorm1 from "./assets/picture/sutdorm1.png";
+  import Sutdorm1 from "./assets/picture/sutdorm1.png";
 
 export default function Login({ onLoginSuccess }) {
   const handleSubmit = (e) => {

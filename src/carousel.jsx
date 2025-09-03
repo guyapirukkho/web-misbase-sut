@@ -23,27 +23,37 @@ export default function Carousel() {
   }, []);
 
   return (
-<div className="relative w-full max-w-480 h-160 mx-auto overflow-hidden">
-  <div
-    className="flex transition-transform duration-700 ease-in-out"
-    style={{ transform: `translateX(-${current * 100}%)` }}
-  >
-    {images.map((img, index) => (
-      <img key={index} src={img} alt={`Slide ${index}`} className="w-full flex-shrink-0" />
-    ))}
-  </div>
+    <div className="relative w-full max-w-dvw h-160 aspect-[16/9] mx-auto overflow-hidden">
+      <div
+        className="flex transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className="w-full h-full flex items-center justify-center flex-shrink-0 bg-black"
+          >
+            <img
+              src={img}
+              alt={`Slide ${index}`}
+              className="max-w-full max-h-full object-contain object-center"
+            />
+          </div>
+        ))}
+      </div>
 
-  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2  px-3 py-2 rounded-full ">
-    {images.map((_, index) => (
-      <button
-        key={index}
-        onClick={() => setCurrent(index)}
-        className={`w-2 h-2 rounded-full pr-4 transition-all ${
-          current === index ? "bg-gray-200 scale-125 cursor-pointer" : "bg-white"
-        }`}
-      />
-    ))}
-  </div>
-</div>
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`w-2 h-2 rounded-full transition-all ${current === index
+                ? "bg-gray-200 scale-125"
+                : "bg-white"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

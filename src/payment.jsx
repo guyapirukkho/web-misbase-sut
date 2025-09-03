@@ -5,6 +5,8 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css'; // 🎨 Theme
 import 'primereact/resources/primereact.min.css'; // Core styles
 import 'primeicons/primeicons.css'; // Icons
 import PP from "./assets/picture/pp.jpg"
+import { FaCreditCard, FaCalendar, FaLock, FaCaretDown, FaClock } from "react-icons/fa";
+
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("card");
   const toast = useRef(null);
@@ -43,9 +45,9 @@ export default function PaymentPage() {
       <Toast ref={toast} position="top-right" />
       <main className="mx-auto max-w-6xl px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          
+
           {/* Summary */}
-          <section className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <section className="lg:col-span-2 bg-white border  border-slate-200 rounded-xl p-6 shadow-md">
             <h2 className="text-lg font-semibold mb-4">สรุปรายการชำระเงิน</h2>
             <ul className="space-y-4">
               <li className="flex justify-between">
@@ -68,21 +70,35 @@ export default function PaymentPage() {
             </div>
           </section>
 
-          <section className="lg:col-span-3 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+          <section className="lg:col-span-3 bg-white border border-slate-200 rounded-xl p-6 shadow-md">
             <h2 className="text-lg font-semibold mb-4">เลือกวิธีชำระเงิน</h2>
-            <div className="mb-4 flex gap-2 " style={{justifyContent:"space-between"}}>
-              {["card", "promptpay", "bank"].map((tab) => (
-                <button
-                  onClick={() => setActiveTab(tab)}
-                  className={`text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 `}
-                >
-                  {tab === "card"
-                    ? "บัตรเครดิต/เดบิต"                       
-                    : tab === "promptpay"
-                    ? "PromptPay (QR)"
-                    : "โอนผ่านธนาคาร"}
-                </button>
-              ))}
+    
+            <div className="mb-4 flex gap-2 " style={{ justifyContent: "space-between" }}>
+              {["card", "promptpay", "bank"].map((tab) => {
+                const isActive = activeTab === tab;
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`relative mt-5 h-[38px] overflow-hidden border rounded-lg w-40 border-red-400 shadow-2xl transition-all
+        before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 before:z-0
+        after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 after:z-0
+        ${isActive
+                        ? "text-white shadow-red-400 before:w-2/4 before:bg-red-400 after:w-2/4 after:bg-red-400"
+                        : "bg-white text-red-400 hover:text-white hover:shadow-red-400 hover:before:w-2/4 hover:before:bg-red-400 hover:after:w-2/4 hover:after:bg-red-400"
+                      }`}
+                  >
+                    <span className="relative z-10">
+                      {tab === "card"
+                        ? "บัตรเครดิต/เดบิต"
+                        : tab === "promptpay"
+                          ? "PromptPay (QR)"
+                          : "โอนผ่านธนาคาร"}
+                    </span>
+                  </button>
+                );
+              })}
+
             </div>
             {activeTab === "card" && (
               <form
@@ -145,7 +161,7 @@ export default function PaymentPage() {
             {activeTab === "promptpay" && (
               <div className="space-y-4">
                 <div className="border border-dashed p-6 text-center rounded-lg">
-                  <img src={PP} className="h-70 justify-self-center"/>
+                  <img src={PP} className="h-70 justify-self-center" />
                   <p className="text-xs text-slate-500">
                     รหัสอ้างอิง: SUT-INV-402-0925
                   </p>
