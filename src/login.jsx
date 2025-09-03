@@ -1,5 +1,5 @@
-  import Sutdorm1 from "./assets/picture/sutdorm1.png";
-
+import Sutdorm1 from "./assets/picture/sutdorm1.png";
+import bglogin from "./assets/picture/bglogin.png";
 export default function Login({ onLoginSuccess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -7,7 +7,10 @@ export default function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div
+      className="flex items-center justify-center min-h-screen bg-cover bg-center px-"
+      style={{ backgroundImage: `url(${bglogin})` }}
+    >
       <div className="bg-white rounded-lg shadow-lg w-full h-125 max-w-md p-8">
         <div className="flex flex-col items-center">
           <img
