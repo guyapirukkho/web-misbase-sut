@@ -6,6 +6,7 @@ import Header from "./header.jsx";
 import Login from './login.jsx';
 import Payment from "./payment.jsx";
 import Light from "./light.jsx";
+import Repass from "./repass.jsx";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

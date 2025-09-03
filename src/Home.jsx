@@ -23,16 +23,33 @@ export default function Home() {
     });
   }, []);
 
-  const textBlock = (
-    <div className="text-gray-800 space-y-4" data-aos="fade-right">
-      <h2 className="text-2xl font-bold">Centara Signatures</h2>
-      <p className="text-sm leading-relaxed">
-        At Centara, signature moments start the love story early. Delight in Kids Stay & Eat Free,
-        unique inclusive privileges at our beachfront havens, unwind with award-winning treatments at SPA Cenvaree,
-        and embark on a journey along Thai’s finest extraordinary high-end dining and drinking experiences crafted to captivate every palate.
-      </p>
-    </div>
-  );
+  const textBlockCleanDesign = (
+  <div className="text-gray-800 space-y-4" data-aos="fade-right">
+    <h2 className="text-2xl font-bold">ห้องน้ำรวม</h2>
+    <p className="text-sm leading-relaxed">
+      ห้องน้ำรวมที่นี่ออกแบบอย่างเรียบง่ายแต่ดูดี พื้นกระเบื้องสีฟ้าอ่อนช่วยให้รู้สึกสะอาดตา 
+      พร้อมเคาน์เตอร์ล้างหน้ากว้างและกระจกบานใหญ่ที่สะท้อนความใส่ใจในรายละเอียด 
+      ทุกพื้นที่ถูกจัดวางอย่างลงตัวเพื่อให้ใช้งานได้สะดวกและปลอดภัย
+    </p>
+  </div>
+);
+const textBlockPrivacySafety = (
+  <div className="text-gray-800 space-y-4" data-aos="fade-left">
+    <h2 className="text-2xl font-bold">ห้องพักรวม</h2>
+    <p className="text-sm leading-relaxed">
+      ที่นี่ไม่ใช่แค่ “ห้องพัก” แต่คือพื้นที่ที่คุณจะได้เติบโต มีแรงบันดาลใจ และใช้ชีวิตในแบบที่คุณเลือก 
+      หอพักสุรนารีพร้อมต้อนรับคุณเข้าสู่ชีวิตนักศึกษาที่ทั้งสงบ ปลอดภัย และเต็มไปด้วยโอกาสดีๆ
+    </p>
+  </div>
+);
+const textBlockConvenience = (
+  <div className="text-gray-800 space-y-4" data-aos="fade-up">
+    <h2 className="text-2xl font-bold">“ฝากไว้ได้...มั่นใจทุกกล่อง” — ระบบฝากพัสดุในหอพักสุรนารี </h2>
+    <p className="text-sm leading-relaxed">
+      เพราะชีวิตนักศึกษาไม่ได้มีแค่เรียนหนังสือ แต่ยังมีของที่ต้องรับ ของที่ต้องส่ง และความสะดวกที่ต้องมี หอพักสุรนารีจึงออกแบบพื้นที่รับฝากพัสดุให้ใช้งานง่าย ปลอดภัย และเป็นระบบ 
+    </p>
+  </div>
+);
 
   const imageBlock = (src, alt, label, animation = "fade-up") => (
     <div className="relative" data-aos={animation}>
@@ -54,23 +71,23 @@ export default function Home() {
 
       {/* Section 1 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
-        {textBlock}
-        {imageBlock(Dome1, "Kids Stay Free", "Kids Stay and Eat For Free", "fade-up")}
-        {imageBlock(Dome2, "Exclusive Benefits", "Exclusive Member Benefits", "fade-up")}
+        {textBlockCleanDesign}
+        {imageBlock(Dome1, "Kids Stay Free", "ห้องน้ำรวม", "fade-up")}
+        {imageBlock(Dome2, "Exclusive Benefits", "จุดพักใจ", "fade-up")}
       </div>
 
       {/* Section 2 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
-        {imageBlock(Dome3, "Spa Cenvaree", "Award-Winning Spa", "fade-right")}
-        {imageBlock(Dome4, "Beachfront Haven", "Beachfront Paradise", "fade-left")}
-        {textBlock}
+        {imageBlock(Dome3, "Spa Cenvaree", "มุมพักใจ", "fade-right")}
+        {imageBlock(Dome4, "Beachfront Haven", "ห้องพักรวม", "fade-left")}
+        {textBlockPrivacySafety}
       </div>
 
       {/* Section 3 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
-        {textBlock}
-        {imageBlock(Dome5, "Fine Dining", "High-End Dining", "zoom-in")}
-        {imageBlock(Dome6, "Luxury Stay", "Exclusive Suites", "zoom-in")}
+        {textBlockConvenience}
+        {imageBlock(Dome5, "Fine Dining", "สิ่งอำนวยความสะดวก", "zoom-in")}
+        {imageBlock(Dome6, "Luxury Stay", "จุดฝากของ", "zoom-in")}
       </div>
       
     </div>
