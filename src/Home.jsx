@@ -34,18 +34,19 @@ export default function Home() {
     </div>
   );
 
-  const imageBlock = (src, alt, label, animation = "fade-up") => (
-    <div className="relative" data-aos={animation}>
-      <img
-        src={src}
-        alt={alt}
-        className="rounded-lg shadow-lg w-full h-auto object-cover"
-      />
-      <div className="absolute bottom-4 left-4 bg-white/80 px-4 py-2 rounded text-sm font-semibold">
-        {label}
-      </div>
+const imageBlock = (src, alt, label, animation = "fade-up") => (
+  <div className="relative group overflow-hidden rounded-lg shadow-lg" data-aos={animation}>
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-auto object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-90"
+    />
+    <div className="absolute bottom-4 left-4 bg-white/80 px-4 py-2 rounded text-sm font-semibold transition duration-300 group-hover:bg-white">
+      {label}
     </div>
-  );
+  </div>
+);
+
 
   return (
     <div className="mt-24 px-10">
