@@ -2,7 +2,9 @@ import 'primeicons/primeicons.css';
 import { useState } from 'react';
 import Userprofile from "./assets/picture/user.png";
 import Logo from "./assets/picture/ssut.png";
-
+import "./light";
+import "./payment"
+import { Link } from "react-router-dom";
 export default function Header({ onLogout }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -17,23 +19,31 @@ export default function Header({ onLogout }) {
         { icon: "pi pi-sign-out", label: "ออกจากระบบ", action: onLogout },
     ];
 
+    const navLinks = [
+        { label: "หน้าหลัก", path: "/" },
+        { label: "รายชื่อผู้พัก", path: "/residents" },
+        { label: "หอพัก", path: "/dorm" },
+        { label: "แจ้งซ่อม", path: "/repair" },
+        { label: "ตรวจค่าไฟ", path: "/light" },       // ✅ ไปหน้า light
+        { label: "ชำระเงิน", path: "/payment" },     // ✅ ไปหน้า payment
+    ];
 
     return (
         <nav className="bg-white shadow-xl fixed top-0 left-0 w-full border-b border-gray-300 z-50">
             <div className="max-w-screen-xl mx-auto flex items-center justify-between h-20 px-6 text-black">
                 <img src={Logo} alt="Logo" className="w-40 cursor-pointer" />
-                <ul className="flex gap-6 font-normal  text-gray-800">
-                    {["หน้าหลัก", "รายชื่อผู้พัก", "หอพัก", "แจ้งซ่อม", "เลือกตั้ง", "ชำระเงิน"].map((item, idx) => (
+                <ul className="flex gap-6 font-normal text-gray-800">
+                    {navLinks.map((link, idx) => (
                         <li key={idx}>
-                            <a
-                                href="#"
+                            <Link
+                                to={link.path}
                                 className="relative inline-block no-underline 
                   after:block after:content-[''] after:w-full after:border-b-2 after:border-red-600
                   after:scale-x-0 after:origin-left after:transition-transform after:duration-300
                   hover:text-gray-500 hover:after:scale-x-100"
                             >
-                                {item}
-                            </a>
+                                {link.label}
+                            </Link>
                         </li>
                     ))}
                 </ul>

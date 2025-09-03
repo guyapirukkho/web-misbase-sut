@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 import 'primereact/resources/themes/lara-light-indigo/theme.css'; // 🎨 Theme
 import 'primereact/resources/primereact.min.css'; // Core styles
 import 'primeicons/primeicons.css'; // Icons
-
+import PP from "./assets/picture/pp.jpg"
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("card");
   const toast = useRef(null);
@@ -27,8 +27,6 @@ export default function PaymentPage() {
       });
     }
   };
-
-  // ฟอร์แมตหมายเลขบัตร
   const formatCardNumber = (value) => {
     const digits = value.replace(/\D/g, "").slice(0, 16);
     return digits.match(/.{1,4}/g)?.join(" ") ?? "";
@@ -41,7 +39,7 @@ export default function PaymentPage() {
   };
 
   return (
-    <div className="bg-white text-slate-800 min-h-screen">
+    <div className="bg-white p-30 text-slate-800 min-h-screen">
       <Toast ref={toast} position="top-right" />
       <main className="mx-auto max-w-6xl px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -72,31 +70,20 @@ export default function PaymentPage() {
 
           <section className="lg:col-span-3 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
             <h2 className="text-lg font-semibold mb-4">เลือกวิธีชำระเงิน</h2>
-
-            {/* Tabs */}
             <div className="mb-4 flex gap-2 " style={{justifyContent:"space-between"}}>
               {["card", "promptpay", "bank"].map((tab) => (
-                <Button
-                  key={tab}
-                   severity="danger"
-                  style={{height:"50px" ,fontSize:"16.5px"}}
+                <button
                   onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-2 rounded justify-self-center border text-sm ${
-                    activeTab === tab
-                      ? "bg-black text-white border-black"
-                      : "border-slate-300 hover:bg-slate-100"
-                  }`}
+                  className={`text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 `}
                 >
                   {tab === "card"
                     ? "บัตรเครดิต/เดบิต"                       
                     : tab === "promptpay"
                     ? "PromptPay (QR)"
                     : "โอนผ่านธนาคาร"}
-                </Button>
+                </button>
               ))}
             </div>
-
-            {/* Card Form */}
             {activeTab === "card" && (
               <form
                 onSubmit={(e) => {
@@ -104,7 +91,7 @@ export default function PaymentPage() {
                   toast.current.show({
                     severity: 'info',
                     summary: 'Demo Mode',
-                    detail: 'ยังไม่เชื่อมต่อเกตเวย์จริง',
+                    detail: 'อยู่ระหว่างการตรวจสอบ',
                     life: 2000
                   });
                 }}
@@ -158,8 +145,7 @@ export default function PaymentPage() {
             {activeTab === "promptpay" && (
               <div className="space-y-4">
                 <div className="border border-dashed p-6 text-center rounded-lg">
-                  <div className="size-40 bg-slate-100 mx-auto mb-3"></div>
-                  <p>วาง QR PromptPay ที่นี่</p>
+                  <img src={PP} className="h-70 justify-self-center"/>
                   <p className="text-xs text-slate-500">
                     รหัสอ้างอิง: SUT-INV-402-0925
                   </p>
