@@ -9,21 +9,26 @@ import Light from "./light.jsx";
 import Repass from "./repass.jsx";
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  if (!isLoggedIn) {
-    return <Login onLoginSuccess={() => setIsLoggedIn(true)} />;
-  }
+    if (!isLoggedIn) {
+        return (
+            <Routes>
+                <Route path="/" element={<Login onLoginSuccess={() => setIsLoggedIn(true)} />} />
+                <Route path="/repass" element={<Repass onResetRequest={() => console.log("Reset requested")} />} />
+            </Routes>
+        );
+    }
 
-  return (
-    <>
-      <Header onLogout={() => setIsLoggedIn(false)} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/light" element={<Light />} />
-        <Route path="/payment" element={<Payment />} />
-      </Routes>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header onLogout={() => setIsLoggedIn(false)} />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/light" element={<Light />} />
+                <Route path="/payment" element={<Payment />} />
+            </Routes>
+            <Footer />
+        </>
+    );
 }

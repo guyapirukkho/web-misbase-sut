@@ -4,7 +4,7 @@ import bglogin from "./assets/picture/bglogin.png";
 export default function ForgotPassword({ onResetRequest }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onResetRequest(); // เรียกฟังก์ชันเมื่อผู้ใช้กดขอรีเซ็ตรหัสผ่าน
+    onResetRequest(); 
   };
 
   return (
