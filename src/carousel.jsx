@@ -9,7 +9,7 @@ import Dome6 from "./assets/picture/Dome6.jpg";
 import Dome7 from "./assets/picture/Dome7.jpg";
 import Dome8 from "./assets/picture/Dome8.jpg";
 
-const images = [Hoo1, Dome1, Dome2, Dome3, Dome4, Dome5, Dome6, Dome7, Dome8];
+const images = [Dome1, Dome2, Dome3, Dome4, Dome5, Dome6, Dome7, Dome8];
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
@@ -17,13 +17,13 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-<div className="relative w-full max-w-480 h-200 mx-auto overflow-hidden">
+<div className="relative w-full max-w-480 h-160 mx-auto overflow-hidden">
   <div
     className="flex transition-transform duration-700 ease-in-out"
     style={{ transform: `translateX(-${current * 100}%)` }}

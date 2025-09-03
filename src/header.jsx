@@ -1,63 +1,72 @@
 import 'primeicons/primeicons.css';
 import { useState } from 'react';
 import Userprofile from "./assets/picture/user.png";
+import Logo from "./assets/picture/ssut.png";
 
-export default function Header() {
+export default function Header({ onLogout }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const menuToggle = () => setMenuOpen(!menuOpen);
 
-    return (
-        <nav className="bg-white/0 shadow-xl h-20 fixed top-0 left-0 w-full border-b hover:opacity-100 delay-200 transition border-gray-300 z-50">
-            <div className="relative max-w-screen-xl mx-auto flex items-center justify-between py-4 px-6 text-black">
-                <div className="text-3xl font-bold tracking-wide cursor-pointer transition hover:-translate-y-1 hover:scale-110">
-                    SUT DOME
-                </div>
+    const menuItems = [
+        { icon: "pi pi-user", label: "ข้อมูลของฉัน" },
+        { icon: "pi pi-pencil", label: "เปลี่ยนแปลงข้อมูล" },
+        { icon: "pi pi-envelope", label: "ติดต่อ" },
+        { icon: "pi pi-cog", label: "ตั้งค่า" },
+        { icon: "pi pi-question-circle", label: "ช่วยเหลือ" },
+        { icon: "pi pi-sign-out", label: "ออกจากระบบ", action: onLogout },
+    ];
 
-                <ul className="flex gap-6 text-gray-800 font-medium">
-                    {["หน้าหลัก", "รายชื่อผู้พัก", "หอพัก", "แจ้งซ่อม", "เลือกตั้ง", "ฟอร์มเอกสาร"].map((item, idx) => (
+
+    return (
+        <nav className="bg-white shadow-xl fixed top-0 left-0 w-full border-b border-gray-300 z-50">
+            <div className="max-w-screen-xl mx-auto flex items-center justify-between h-20 px-6 text-black">
+                <img src={Logo} alt="Logo" className="w-40 cursor-pointer" />
+                <ul className="flex gap-6 font-normal  text-gray-800">
+                    {["หน้าหลัก", "รายชื่อผู้พัก", "หอพัก", "แจ้งซ่อม", "เลือกตั้ง", "ชำระเงิน"].map((item, idx) => (
                         <li key={idx}>
-                            <a href="#" className="hover:text-red-600 hover:border-b-2 border-red-600 pb-1 transition-all">
+                            <a
+                                href="#"
+                                className="relative inline-block no-underline 
+                  after:block after:content-[''] after:w-full after:border-b-2 after:border-red-600
+                  after:scale-x-0 after:origin-left after:transition-transform after:duration-300
+                  hover:text-gray-500 hover:after:scale-x-100"
+                            >
                                 {item}
                             </a>
                         </li>
                     ))}
                 </ul>
-                <div className="flex items-center gap-6">
-                    <span className="pi pi-search text-xl cursor-pointer hover:text-red-600"></span>
 
-                    <div className="relative">
-                        <div
-                            className="w-8 h-8 rounded-full overflow-hidden cursor-pointer border-2 border-gray-300"
-                            onClick={menuToggle}
-                        >
-                            <img src={Userprofile} alt="Profile" className="w-full h-full object-cover" />
-                        </div>
-
-                        {menuOpen && (
-                            <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-md z-50">
-                                <div className="p-4 border-b">
-                                    <h3 className="text-lg font-semibold">Vamos</h3>
-                                    <span className="text-sm text-gray-500">XXXXX</span>
-                                </div>
-                                <ul className="p-2">
-                                    {[
-                                        { icon: "./assets/icons/user.png", label: "ข้อมูลของฉัน" },
-                                        { icon: "./assets/icons/edit.png", label: "เปลีย่นแปลงข้อมูล" },
-                                        { icon: "./assets/icons/envelope.png", label: "ติดต่อ" },
-                                        { icon: "./assets/icons/settings.png", label: "ตั้งค่า" },
-                                        { icon: "./assets/icons/question.png", label: "ช่วยเหลือ" },
-                                        { icon: "./assets/icons/log-out.png", label: "ออกจากระบบ" },
-                                    ].map((item, idx) => (
-                                        <li key={idx} className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 rounded cursor-pointer">
-                                            <img src={item.icon} alt="" className="w-4 h-4" />
-                                            <a href="#">{item.label}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                {/* โปรไฟล์ */}
+                <div className="relative">
+                    <div
+                        className="w-8 h-8 rounded-full overflow-hidden cursor-pointer border-2 border-gray-300"
+                        onClick={menuToggle}
+                    >
+                        <img src={Userprofile} alt="Profile" className="w-full h-full object-cover" />
                     </div>
+
+                    {menuOpen && (
+                        <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 shadow-lg rounded-md z-50">
+                            <div className="p-4 border-b">
+                                <h3 className="text-lg font-not-italic font-semibold">Vamos</h3>
+                                <span className="text-sm text-gray-500">XXXXX</span>
+                            </div>
+                            <ul className="p-2">
+                                {menuItems.map((item, idx) => (
+                                    <li
+                                        key={idx}
+                                        className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 rounded cursor-pointer"
+                                        onClick={item.action ? item.action : undefined}
+                                    >
+                                        <i className={`${item.icon} text-gray-600`}></i>
+                                        <span>{item.label}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </nav>
