@@ -49,7 +49,11 @@ export default function Home() {
 
   return (
     <div className="mt-24 px-10">
-      <Carousel />
+      <div data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom">
+        <Carousel />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center mt-20">
         {textBlock}
         {imageBlock(Dome1, "Kids Stay Free", "Kids Stay and Eat For Free", "fade-up")}
@@ -69,7 +73,7 @@ export default function Home() {
         {imageBlock(Dome5, "Fine Dining", "High-End Dining", "zoom-in")}
         {imageBlock(Dome6, "Luxury Stay", "Exclusive Suites", "zoom-in")}
       </div>
-      
+
     </div>
   );
 }

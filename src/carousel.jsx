@@ -23,7 +23,7 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-dvw h-160 aspect-[16/9] mx-auto overflow-hidden">
+    <div className="relative w-full max-w-dvw  h-180 aspect-[16/9] mx-auto overflow-hidden">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -36,7 +36,7 @@ export default function Carousel() {
             <img
               src={img}
               alt={`Slide ${index}`}
-              className="max-w-full max-h-full object-contain object-center"
+              className="w-full h-full object-cover object-center"
             />
           </div>
         ))}
@@ -47,7 +47,7 @@ export default function Carousel() {
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-2 h-2 rounded-full transition-all ${current === index
+            className={`w-2 h-2 rounded-full object-cover object-center transition-all ${current === index
                 ? "bg-gray-200 scale-125"
                 : "bg-white"
               }`}
