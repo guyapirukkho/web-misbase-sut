@@ -6,12 +6,14 @@ import 'primereact/resources/primereact.min.css'; // Core styles
 import 'primeicons/primeicons.css'; // Icons
 import PP from "./assets/picture/pp.jpg"
 import { FaCreditCard, FaCalendar, FaLock, FaCaretDown, FaClock } from "react-icons/fa";
+import 'tw-elements';
+import { Modal, Ripple, initTWE } from "tw-elements";
+initTWE({ Modal, Ripple });
 
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("card");
   const toast = useRef(null);
 
-  // ฟังก์ชันคัดลอกข้อความ
   const copyText = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -41,7 +43,7 @@ export default function PaymentPage() {
   };
 
   return (
-    <div className="bg-white p-30 text-slate-800 min-h-screen">
+    <div className="bg-gray-200 p-30 text-slate-800 min-h-screen">
       <Toast ref={toast} position="top-right" />
       <main className="mx-auto max-w-6xl px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -72,7 +74,7 @@ export default function PaymentPage() {
 
           <section className="lg:col-span-3 bg-white border border-slate-200 rounded-xl p-6 shadow-md">
             <h2 className="text-lg font-semibold mb-4">เลือกวิธีชำระเงิน</h2>
-    
+
             <div className="mb-4 flex gap-2 " style={{ justifyContent: "space-between" }}>
               {["card", "promptpay", "bank"].map((tab) => {
                 const isActive = activeTab === tab;
@@ -80,13 +82,13 @@ export default function PaymentPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`relative mt-5 h-[38px] overflow-hidden border rounded-lg w-40 border-red-400 shadow-2xl transition-all
+                    className={`relative mt-5 h-[38px] overflow-hidden border rounded-lg w-40 border-black shadow-2xl transition-all
         before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 before:z-0
         after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 after:z-0
         ${isActive
-                        ? "text-white shadow-red-400 before:w-2/4 before:bg-red-400 after:w-2/4 after:bg-red-400"
-                        : "bg-white text-red-400 hover:text-white hover:shadow-red-400 hover:before:w-2/4 hover:before:bg-red-400 hover:after:w-2/4 hover:after:bg-red-400"
-                      }`}
+                        ? "bg-black text-white shadow-black"
+                        : "bg-white text-black hover:bg-black hover:text-white hover:shadow-black"}
+`}
                   >
                     <span className="relative z-10">
                       {tab === "card"

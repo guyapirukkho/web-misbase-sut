@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from './Home.jsx';
 import Footer from "./footer.jsx";
 import Header from "./header.jsx";
@@ -7,28 +7,31 @@ import Login from './login.jsx';
 import Payment from "./payment.jsx";
 import Light from "./light.jsx";
 import Repass from "./repass.jsx";
+import "./app.css"
+import Checkprice from "./checkprice.jsx";
 
 export default function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    if (!isLoggedIn) {
-        return (
-            <Routes>
-                <Route path="/" element={<Login onLoginSuccess={() => setIsLoggedIn(true)} />} />
-                <Route path="/repass" element={<Repass onResetRequest={() => console.log("Reset requested")} />} />
-            </Routes>
-        );
-    }
+  return (
+    <div className="flex flex-col min-h-screen">
+      {isLoggedIn && <Header onLogout={() => setIsLoggedIn(false)} />}
 
-    return (
-        <>
-            <Header onLogout={() => setIsLoggedIn(false)} />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/light" element={<Light />} />
-                <Route path="/payment" element={<Payment />} />
-            </Routes>
-            <Footer />
-        </>
-    );
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Login onLoginSuccess={() => setIsLoggedIn(true)} />} />
+          <Route path="/repass" element={<Repass onResetRequest={() => console.log("Reset requested")} />} />
+
+          <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
+          <Route path="/light" element={isLoggedIn ? <Light /> : <Navigate to="/" />} />
+          <Route path="/payment" element={isLoggedIn ? <Payment /> : <Navigate to="/" />} />
+          <Route path="/checkprice" element={isLoggedIn ? <Checkprice /> : <Navigate to="/" />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
+
+      {isLoggedIn && <Footer />}
+    </div>
+  );
 }

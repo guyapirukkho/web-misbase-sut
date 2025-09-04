@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from "react";
 import LL from "./assets/picture/LL.png"
+import { useNavigate } from "react-router-dom";
+
 export default function ElectricityUsage() {
   const [prevReading, setPrevReading] = useState(12500);
   const [currReading, setCurrReading] = useState(12580);
@@ -18,14 +20,15 @@ export default function ElectricityUsage() {
   const totalCost = useMemo(() => {
     return usage * rate;
   }, [usage, rate]);
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen p-30 bg-white text-black p-6">
+    <div className="min-h-screen p-30 bg-gray-300 text-black ">
       <div className="max-w-lg mx-auto bg-white border border-gray-300 rounded-xl p-6 shadow">
-<div className="flex items-center gap-3">
-  <img src={LL} className="h-12" />
-  <h1 className="text-xl font-bold">ตรวจสอบหน่วยไฟฟ้า</h1>
-</div>
+        <div className="flex items-center gap-3">
+          <img src={LL} className="h-12" />
+          <h1 className="text-xl font-bold">ตรวจสอบหน่วยไฟฟ้า</h1>
+        </div>
 
         <div className="space-y-4">
           <div>
@@ -80,6 +83,11 @@ export default function ElectricityUsage() {
             <p className="text-lg font-semibold mt-2">
               ค่าไฟ: {totalCost.toLocaleString("th-TH", { minimumFractionDigits: 2 })} บาท
             </p>
+          </div>
+          <div className="justify-self-end">
+            <button
+              onClick={() => navigate("/payment")}
+              type="button" className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">ชำระเงิน</button>
           </div>
         </div>
       </div>

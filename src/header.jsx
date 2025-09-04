@@ -20,12 +20,10 @@ export default function Header({ onLogout }) {
     ];
 
     const navLinks = [
-        { label: "หน้าหลัก", path: "/" },
-        { label: "รายชื่อผู้พัก", path: "/" },
-        { label: "หอพัก", path: "/" },
-        { label: "แจ้งซ่อม", path: "/" },
-        { label: "ตรวจค่าไฟ", path: "/light" },   
-        { label: "ชำระเงิน", path: "/payment" },   
+        { label: "หน้าหลัก", path: "/home" },
+        // { label: "รายชื่อผู้พัก", path: "/home" },
+        // { label: "หอพัก", path: "/home" },
+        { label: "เช็คค่าหอ", path: "/checkprice" },
     ];
 
     return (

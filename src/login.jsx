@@ -9,6 +9,7 @@ export default function Login({ onLoginSuccess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onLoginSuccess();
+    navigate("/home");
   };
   const navigate = useNavigate();
   return (
