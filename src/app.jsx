@@ -9,7 +9,7 @@ import Light from "./light.jsx";
 import Repass from "./repass.jsx";
 import "./app.css"
 import Checkprice from "./checkprice.jsx";
-
+import Acc from "./acc.jsx";
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -26,12 +26,12 @@ export default function App() {
           <Route path="/light" element={isLoggedIn ? <Light /> : <Navigate to="/" />} />
           <Route path="/payment" element={isLoggedIn ? <Payment /> : <Navigate to="/" />} />
           <Route path="/checkprice" element={isLoggedIn ? <Checkprice /> : <Navigate to="/" />} />
-
+          <Route path="/acc" element={isLoggedIn ? <Acc /> : <Navigate to="/" />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
 
-      {isLoggedIn && <Footer />}
+      {/* {isLoggedIn && <Footer />} */}
     </div>
   );
 }

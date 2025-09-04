@@ -17,7 +17,7 @@ export default function Login({ onLoginSuccess }) {
       className="flex items-center justify-center min-h-screen bg-cover bg-center px-"
       style={{ backgroundImage: `url(${bglogin})` }}
     >
-      <div className="bg-white rounded-lg shadow-lg w-full h-125 max-w-md p-8">
+      <div className="bg-white rounded-lg shadow-lg  w-full h-125 max-w-md p-8">
         <div className="flex flex-col items-center">
           <img
             src={Sutdorm1}

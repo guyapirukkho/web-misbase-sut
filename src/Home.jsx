@@ -3,7 +3,8 @@ import Carousel from "./carousel.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import BGGG from "./assets/picture/bggg.jpg"
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // รูปภาพ
 import Hoo1 from "./assets/picture/Hoo1.jpg";
 import Dome1 from "./assets/picture/Dome1.jpg";
@@ -16,6 +17,31 @@ import Dome7 from "./assets/picture/Dome7.jpg";
 import Dome8 from "./assets/picture/Dome8.jpg";
 
 export default function Home() {
+
+
+    const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    faculty: "",
+    year: "",
+    dorm: "หอ 7",
+    rent: 4500,
+    water: 120,
+    electricity: 200,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleNext = () => {
+    // ส่งข้อมูลไปยังหน้าถัดไป (อาจใช้ context หรือ localStorage)
+    localStorage.setItem("paymentInfo", JSON.stringify(formData));
+    navigate("/payment"); // ไปยังหน้าที่สอง
+  };
+
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -68,7 +94,7 @@ export default function Home() {
 
   return (
     <div
-      className="mt-24 px-2 h-500 bg-cover bg-center bg-no-repeat"
+      className="mt-24 px-2 h-full bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${BGGG})` }}
     >
       <div

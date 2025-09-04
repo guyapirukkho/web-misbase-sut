@@ -1,7 +1,7 @@
 import 'primeicons/primeicons.css';
 import { useState } from 'react';
 import Userprofile from "./assets/picture/user.png";
-import Logo from "./assets/picture/ssut.png";
+import Logo from "./assets/picture/sssut.png";
 import "./light";
 import "./payment"
 import { Link } from "react-router-dom";
@@ -21,9 +21,9 @@ export default function Header({ onLogout }) {
 
     const navLinks = [
         { label: "หน้าหลัก", path: "/home" },
-        // { label: "รายชื่อผู้พัก", path: "/home" },
-        // { label: "หอพัก", path: "/home" },
-        { label: "เช็คค่าหอ", path: "/checkprice" },
+        { label: "รายชื่อผู้พัก", path: "/home" },
+        { label: "หอพัก", path: "/home" },
+        { label: "ห้องของฉัน", path: "/checkprice" },
     ];
 
     return (
@@ -36,7 +36,7 @@ export default function Header({ onLogout }) {
                             <Link
                                 to={link.path}
                                 className="relative inline-block no-underline 
-                  after:block after:content-[''] after:w-full after:border-b-2 after:border-red-600
+                  after:block after:content-[''] after:w-full after:border-b-2 after:border-orange-400
                   after:scale-x-0 after:origin-left after:transition-transform after:duration-300
                   hover:text-gray-500 hover:after:scale-x-100"
                             >
