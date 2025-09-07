@@ -1,0 +1,285 @@
+:root {
+  --primary: #000;         
+  --accent: #c5a46d;      
+  --bg: #ffffff;
+  --text: #222;
+  --font-head: "Prompt", sans-serif;
+  --font-body: "Sarabun", sans-serif;
+}
+
+html, body {
+  height: 100%;              
+  margin: 0;
+  display: flex;             
+  flex-direction: column;    
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-family: var(--font-head);
+  letter-spacing: 0.5px;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Navigation */
+nav {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+}
+nav a {
+  color: var(--text);
+  padding: 14px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: var(--font-head);
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Container */
+.container {
+  max-width: none;
+  margin: auto;
+  padding: 40px 20px;
+  flex: 1; 
+}
+
+/* Notice Box */
+.notice {
+  background: #fafafa;
+  border-left: 5px solid var(--accent);
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.notice h2 {
+  margin-top: 0;
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+/* Form Section */
+.form-section {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+.form-section h2 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  margin-top: 0;
+  color: var(--primary);
+}
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  font-family: var(--font-head);
+}
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: border-color 0.3s ease;
+}
+input:focus, select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Button */
+button {
+  background: linear-gradient(135deg, var(--accent), #e6c98f);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-head);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  margin-top: auto;  
+  font-family: var(--font-head);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    border-top: 1px solid #eee;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans Thai", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* จัดกลางทั้งหน้า */
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* กล่อง Carousel */
+.carousel {
+  width: 90vw;         
+  height: 650px;      
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 0 auto;      
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.7s ease;
+}
+
+/* แต่ละสไลด์กินพื้นที่เท่ากับความกว้างของ .carousel */
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ปุ่มลูกศรซ้าย/ขวา */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: rgba(255,255,255,0.75);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: background .2s ease, transform .2s ease;
+}
+.nav:hover { background: white; }
+.nav:active { transform: translateY(-50%) scale(0.96); }
+.prev { left: 12px; }
+.next { right: 12px; }
+
+/* จุดสถานะ */
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.dots button:hover { transform: scale(1.15); }
+.dots button.active { background: #ffffff; }
+
+/* Responsive: จอเล็กให้กว้างขึ้น */
+@media (max-width: 1024px) {
+  .carousel { width: 90vw; }
+}
+@media (max-width: 640px) {
+  .carousel { width: 100%; border-radius: 10px; }
+  .nav { width: 36px; height: 36px; font-size: 24px; }
+}
+
+button.btn-prev,
+button.btn-next {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-20%);
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+button.btn-prev:hover,
+button.btn-next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/*ตำแหน่ง */
+button#prev {
+  left: 10px;
+}
+
+button#next {
+  right: 10px;
+}
