@@ -50,10 +50,7 @@ export default function Login({ onLoginSuccess }) {
           </div>
           <div>
             <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium  text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 รหัสผ่าน
               </label>
               <button
@@ -68,7 +65,7 @@ export default function Login({ onLoginSuccess }) {
               <span className="pi pi-key absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></span>
               <input
                 id="studentId"
-                type="text"
+                type="password"
                 placeholder="กรอกรหัสนักศึกษา"
                 className="block w-full rounded-md focus:outline-orange-300 focus:outline-2 pl-10 pr-3 py-2 
                text-gray-900 placeholder-gray-400 shadow-sm focus:border-indigo-500 
