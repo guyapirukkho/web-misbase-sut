@@ -3,7 +3,8 @@ import bglogin from "./assets/picture/bglogin.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Login({ onLoginSuccess }) {
   const handleSubmit = (e) => {

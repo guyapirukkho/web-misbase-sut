@@ -113,14 +113,14 @@ export default function PaymentPage() {
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       className={`relative mt-5 h-[38px] overflow-hidden border rounded-lg w-40 border-orange-400 shadow-2xl transition-all
-        before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 before:z-0
+        before:absolute before:left-0 before:top-0 cursor-pointer before:h-full before:w-0 before:duration-100 before:z-0
         after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 after:z-0
         ${isActive
                           ? "bg-orange-400 text-white shadow-orange-400"
                           : "bg-white text-orange-400 hover:bg-orange-400 hover:text-white hover:shadow-orange-400"}
 `}
                     >
-                      <span className="relative z-10">
+                      <span className="relative cursor-pointer z-10">
                         {tab === "card"
                           ? "บัตรเครดิต/เดบิต"
                           : tab === "promptpay"
@@ -188,7 +188,7 @@ export default function PaymentPage() {
                          shadow-2xl transition-all before:absolute before:left-0
                           before:top-0 before:h-full before:w-0 before:duration-100
                            after:absolute after:right-0 after:top-0 after:h-full 
-                            after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 
+                            after:w-0 after:duration-100 cursor-pointer hover:text-white hover:shadow-orange-400 
                             hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4
                              hover:after:bg-orange-400">
                     <span className="relative z-10">
@@ -211,7 +211,7 @@ export default function PaymentPage() {
                       รหัสอ้างอิง: SUT-INV-402-0925
                     </p>
                   </div>
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span>หมายเลขพร้อมเพย์: 080-123-4567</span>
                     <button
                       onClick={() => copyText("080-123-4567")}
@@ -219,7 +219,7 @@ export default function PaymentPage() {
                     >
                       คัดลอก
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               )}
               {/* Bank Transfer */}

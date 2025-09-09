@@ -1,7 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import LL from "./assets/picture/LL.png";
 import { useNavigate } from "react-router-dom";
-import Bgblack from "./assets/picture/bg_black.png"
+import Bgblack from "./assets/picture/bg_black.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function UsageCheck() {
   const [prevReading, setPrevReading] = useState(12500);
   const [currReading, setCurrReading] = useState(12580);
@@ -18,13 +20,20 @@ export default function UsageCheck() {
   const totalWaterCost = useMemo(() => usageWater * waterRate, [usageWater, waterRate]);
   const totalAll = totalElectricCost + totalWaterCost;
   const navigate = useNavigate();
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
   return (
     <div
       className="relative min-h-screen p-6 text-black bg-cover bg-center"
       style={{ backgroundImage: `url(${Bgblack})` }}
     >
       <div className="absolute inset-0 bg-black opacity-40"></div>
-      <div className="relative z-10 w-300 mx-auto bg-white border mt-25 border-gray-300 rounded-xl p-6 shadow">
+      <div data-aos="fade-up" className="relative z-10 w-300 mx-auto bg-white border mt-25 border-gray-300 rounded-xl p-6 shadow">
         <div className="flex items-center gap-3 mb-4">
           <img src={LL} className="h-12" alt="Usage Icon" />
           <h1 className="text-xl font-bold">ตรวจสอบหน่วยไฟฟ้าและน้ำ</h1>
