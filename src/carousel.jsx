@@ -81,7 +81,7 @@ export default function FullOverlayCarousel() {
             <div
               key={index}
               ref={(el) => (thumbsRef.current[index] = el)}
-              className={`min-w-[150px] h-24 rounded-lg overflow-hidden cursor-pointer transition-transform duration-300 ${
+              className={`min-w-[150px] h-24 rounded-lg mt-20 ml-2 overflow-hidden cursor-pointer transition-transform duration-300 ${
                 index === current
                   ? "scale-105 ring-4 ring-white"
                   : "opacity-70 hover:opacity-100"

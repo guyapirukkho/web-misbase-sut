@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <div
-      className="mt-24 px-2 h-full bg-cover bg-center bg-no-repeat"
+      className="mt-24 px-2 h-470 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${BGGG})` }}
     >
       <div
@@ -105,7 +105,7 @@ export default function Home() {
         <Carousel />
       </div>
 
-
+    
       <div className="grid grid-cols-1 px-20 md:grid-cols-3 gap-6 items-center mt-36">
         {textBlockCleanDesign}
         {imageBlock(Dome1, "Kids Stay Free", "ห้องน้ำรวม", "fade-up")}
