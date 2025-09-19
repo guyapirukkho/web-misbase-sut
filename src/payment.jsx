@@ -238,8 +238,40 @@ export default function PaymentPage() {
                       </button>
                     </p>
                   </div>
+
+                  {/* ช่องแนบสลิป */}
+                  <div className="border p-4 rounded-lg">
+                    <label className="block mb-2 text-sm font-medium text-slate-700">
+                      แนบรูปสลิปการโอนเงิน
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="block w-full text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-red-50 file:text-red-700
+          hover:file:bg-red-100"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        toast.current.show({
+                          severity: 'info',
+                          summary: 'Demo Mode',
+                          detail: 'กำลังตรวจสอบสลิป',
+                          life: 2000
+                        })
+                      }
+                      className="mt-4 w-full bg-black text-white rounded-lg py-2.5 font-medium hover:bg-gray-800"
+                    >
+                      ส่งสลิปการโอนเงิน
+                    </button>
+                  </div>
                 </div>
               )}
+
             </section>
           </div>
         </main>
