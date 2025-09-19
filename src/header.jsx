@@ -11,7 +11,7 @@ export default function Header({ onLogout }) {
     const menuToggle = () => setMenuOpen(!menuOpen);
 
     const menuItems = [
-        { icon: "pi pi-user", label: "ข้อมูลของฉัน" },
+        { icon: "pi pi-user", label: "ข้อมูลของฉัน" , path: "/user" },
         { icon: "pi pi-pencil", label: "เปลี่ยนแปลงข้อมูล" },
         { icon: "pi pi-envelope", label: "ติดต่อ" },
         { icon: "pi pi-cog", label: "ตั้งค่า" },
@@ -67,8 +67,8 @@ export default function Header({ onLogout }) {
                                         className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 rounded cursor-pointer"
                                         onClick={item.action ? item.action : undefined}
                                     >
-                                        <i className={`${item.icon} text-gray-600`}></i>
-                                        <span>{item.label}</span>
+                                        <Link to={item.path} className={`${item.icon} text-gray-600`}></Link>
+                                        <Link to={item.path}>{item.label}</Link>
                                     </li>
                                 ))}
                             </ul>

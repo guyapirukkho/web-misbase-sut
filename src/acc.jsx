@@ -35,6 +35,13 @@ export default function ACC() {
         localStorage.setItem("paymentInfo", JSON.stringify(formData));
         navigate("/payment");
     };
+      useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          easing: "ease-in-out",
+        });
+      }, []);
     return (
         <div
             className="relative min-h-screen p-8 scale-100 text-slate-800 bg-cover bg-center"
@@ -43,7 +50,7 @@ export default function ACC() {
             }}
         >
             <div className="absolute inset-0 bg-black opacity-40"></div>
-            <div className="relative mt-30 z-10">
+            <div data-aos="fade-down" className="relative mt-30 z-10">
                 <div className="bg-white max-w-3xl mx-auto p-6 rounded-lg shadow">
                     <main className="space-y-6">
                         <h1 className="text-2xl font-bold">ข้อมูลการชำระเงิน</h1>
@@ -79,8 +86,8 @@ export default function ACC() {
                          shadow-2xl transition-all before:absolute before:left-0
                           before:top-0 before:h-full before:w-0 before:duration-100
                            after:absolute after:right-0 after:top-0 after:h-full 
-                            after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 
-                            hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4
+                            after:w-0 after:duration-100 cursor-pointer hover:text-white hover:shadow-orange-400 
+                            hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-3/4
                              hover:after:bg-orange-400">
                             <span className="relative z-10">
                                 ดำเนินการต่อ</span>

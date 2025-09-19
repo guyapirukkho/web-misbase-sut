@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ProfilePic from "./assets/picture/sssut.png"; // รูปโปรไฟล์
@@ -19,6 +19,7 @@ export default function PersonalInfo() {
     meterElectricNow: 1080,
     meterWaterPrev: 500,
     meterWaterNow: 510,
+    waterprev: 30,
     rent: 3000
   };
   const navigate = useNavigate();
@@ -27,7 +28,17 @@ export default function PersonalInfo() {
   const waterUnits = person.meterWaterNow - person.meterWaterPrev;
   const electricPrice = electricUnits * 8;
   const waterPrice = waterUnits * 5;
+  const waterprevx = person.waterprev * 5;
+  const monthprev = waterprevx + electricPrice;
   const total = person.rent + electricPrice + waterPrice;
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   return (
     <div
@@ -36,11 +47,9 @@ export default function PersonalInfo() {
         backgroundImage: `url(${Bgblack})`,
       }}
     >
-      {/* ชั้นโปร่งใสทับพื้นหลัง */}
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
-      {/* กล่องเนื้อหา */}
-      <div className="relative z-10 w-300 mx-auto bg-white border mt-25 border-gray-300 rounded-xl p-6 shadow">
+      <div data-aos="fade-left" className="relative z-10 w-300 mx-auto bg-white border mt-25 border-gray-300 rounded-xl p-6 shadow">
         {/* ส่วนโปรไฟล์ */}
         <div className="flex items-center gap-6 border-b pb-4 mb-4">
           <img
@@ -77,18 +86,19 @@ export default function PersonalInfo() {
         <h3 className="text-lg font-bold mb-2">ข้อมูลมิเตอร์</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="p-3 border border-gray-300 rounded">
-            <p className="font-semibold">มิเตอร์ไฟฟ้า</p>
-            <p>เดือนที่แล้ว: {person.meterElectricPrev}</p>
-            <p>เดือนนี้: {person.meterElectricNow}</p>
-            <p>ใช้ไป: {electricUnits} หน่วย</p>
-            <p>ค่าไฟ: {electricPrice} บาท</p>
+            <p className="font-semibold">มิเตอร์เดือนที่แล้ว</p>
+            <p>มิเตอร์ไฟฟ้า: {person.meterElectricPrev}</p>
+            <p>มิเตอร์น้ำ: {person.meterWaterPrev}</p>
+            <p>ไฟฟ้าใช้ไป: {electricUnits} หน่วย</p>
+            <p>ค่าน้ำ: {person.waterprev} หน่วย</p>
+            <p>รวมเดือนที่แล้ว: {monthprev} บาท</p>
           </div>
           <div className="p-3 border border-gray-300 rounded">
-            <p className="font-semibold">มิเตอร์น้ำ</p>
-            <p>เดือนที่แล้ว: {person.meterWaterPrev}</p>
-            <p>เดือนนี้: {person.meterWaterNow}</p>
-            <p>ใช้ไป: {waterUnits} หน่วย</p>
-            <p>ค่าน้ำ: {waterPrice} บาท</p>
+            <p className="font-semibold">มิเตอร์เดือนนี้</p>
+            <p>มิเตอร์ไฟฟ้า: {person.meterElectricNow}</p>
+            <p>มิเตอร์น้ำ: {person.meterWaterNow}</p>
+            <p>เดือนนี้ใช้ไป: {waterUnits} หน่วย</p>
+            <p>เดือนนี้ค่าน้ำ: {waterPrice} หน่วย</p>
           </div>
         </div>
 
@@ -104,13 +114,13 @@ export default function PersonalInfo() {
         <div className="justify-self-end">
           <button
             onClick={() => navigate("/light")}
-            className="relative mt-5 h-[38px] overflow-hidden border mr-5 rounded-lg w-40 border-orange-400 justify-self-center bg-white text-orange-400 shadow-2xl transition-all before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4 hover:after:bg-orange-400"
+            className="relative cursor-pointer mt-5 h-[38px] overflow-hidden border mr-5 rounded-lg w-40 border-orange-400 justify-self-center bg-white text-orange-400 shadow-2xl transition-all before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4 hover:after:bg-orange-400"
           >
             <span className="relative z-10">รายละเอียดเพิ่มเติม</span>
           </button>
           <button
             onClick={() => navigate("/acc")}
-            className="relative mt-5 h-[38px] overflow-hidden border rounded-lg w-40 border-orange-400 justify-self-center bg-white text-orange-400 shadow-2xl transition-all before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4 hover:after:bg-orange-400"
+            className="relative mt-5 h-[38px] cursor-pointer overflow-hidden border rounded-lg w-40 border-orange-400 justify-self-center bg-white text-orange-400 shadow-2xl transition-all before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:duration-100 after:absolute after:right-0 after:top-0 after:h-full after:w-0 after:duration-100 hover:text-white hover:shadow-orange-400 hover:before:w-2/4 hover:before:bg-orange-400 hover:after:w-2/4 hover:after:bg-orange-400"
           >
             <span className="relative z-10">ชำระเงิน</span>
           </button>
