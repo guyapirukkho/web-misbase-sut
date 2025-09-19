@@ -13,7 +13,7 @@ export default function PersonalInfo() {
     year: "ปีที่ 1",
     dorm: "หอ-7",
     phone: "080-123-4567",
-    email: "natchawat@example.com",
+    email: "tatata@gmail.com",
     age: 20,
     meterElectricPrev: 1000,
     meterElectricNow: 1080,
